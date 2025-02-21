@@ -44,7 +44,6 @@ dtree = dtree.fit(X, y)
 # Plotting the decision tree
 
 def showTree():
-    #plt.figure(figsize=(6, 7))
     tree.plot_tree(dtree, feature_names=features, rounded=True, class_names=['Good', 'Bad'])
     plt.show()
 
@@ -64,4 +63,5 @@ def predict():
     else:
         return 'Based on what you\'ve told me I believe you day will be BAD.'
     
-print(predict())
+showTree()
+#print(predict())
