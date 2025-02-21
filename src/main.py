@@ -28,22 +28,29 @@ dtree = DecisionTreeClassifier()
 dtree = dtree.fit(X, y)
 
 # Plotting the decision tree
-plt.figure(figsize=(6, 7))
-tree.plot_tree(dtree, feature_names=features, rounded=True, class_names=['Good', 'Bad'])
-#plt.show()
 
-#print("[0] GOOD\n[1] BAD")
-prediction = dtree.predict([[
-                        11, # Time you wake up (7AM to 11AM)
-                        10, # Amount of hours you slept (6 to 10 Hours)
-                        0, # First thing you do in the morning ('Phone': 0, 'Shower': 1, 'Eat' : 2)
-                        1 # Weather on that Day ('Snowy': 0, 'Clear': 1, 'Rainy' : 2, 'Sunny' : 3, 'Other' : 4)
-                    ]])
+def showTree():
+    plt.figure(figsize=(6, 7))
+    tree.plot_tree(dtree, feature_names=features, rounded=True, class_names=['Good', 'Bad'])
+    plt.show()
 
-# [0] GOOD
-# [1] BAD
+# Predicting how your day will be
 
-if prediction == 0:
-    print('Based on what you told me, I predict your day will be GOOD.')
-else:
-    print('Baed on what you\'ve told me I believe you day will be BAD.')
+def predict(): 
+    prediction = dtree.predict([[
+                            11, # Time you wake up (7AM to 11AM)
+                            10, # Amount of hours you slept (6 to 10 Hours)
+                            0, # First thing you do in the morning ('Phone': 0, 'Shower': 1, 'Eat' : 2)
+                            1 # Weather on that Day ('Snowy': 0, 'Clear': 1, 'Rainy' : 2, 'Sunny' : 3, 'Other' : 4)
+                        ]])
+    # [0] GOOD
+    # [1] BAD
+    if prediction == 0:
+        return 'Based on what you told me, I predict your day will be GOOD.'
+    else:
+        return 'Based on what you\'ve told me I believe you day will be BAD.'
+
+
+
+
+
