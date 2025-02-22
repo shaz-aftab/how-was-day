@@ -22,16 +22,17 @@ def time_to_minutes(time_str):
 # Remapping
 
 df["time"] = df["time"].apply(time_to_minutes)
-#print(df['time'])
 d = { 'Phone': 0, 'Shower': 1, 'Eat' : 2, 'Dress' : 3, 'Excercise' : 4, 'Meditate' : 5 }
 df['firstThing'] = df['firstThing'].map(d)
 d = { 'Snowy': 0, 'Clear': 1, 'Rainy' : 2, 'Sunny' : 3, 'Cloudy' : 4, 'Foggy' : 5, 'Hail' : 6 }
 df['weather'] = df['weather'].map(d)
 d = { False : 0, True : 1 }
 df['goodBad'] = df['goodBad'].map(d)
+d = { 'refreshed' : 0, 'tired' : 1, 'happy' : 2, 'lazy' : 3, 'groggy' : 4, 'sad' : 5 }
+df['mood'] = df['mood'].map(d)
 
 # specifying features
-features = ['time', 'sleepHours', 'firstThing', 'weather']
+features = ['time', 'sleepHours', 'firstThing', 'weather', 'mood']
 
 # creating seperate variables for features & target
 X = df[features]
@@ -52,9 +53,10 @@ def showTree():
 def predict(): 
     prediction = dtree.predict([[
                             time_to_minutes('11:00'), # Time you wake up (4:00 to 14:00)
-                            10, # Amount of hours you slept (6 to 10 Hours)
+                            10, # Amount of hours you slept (4 to 14 Hours)
                             0, # First thing you do in the morning { 'Phone': 0, 'Shower': 1, 'Eat' : 2, 'Dress' : 3, 'Excercise' : 4, 'Meditate' : 5 }
-                            1 # Weather on that Day { 'Snowy': 0, 'Clear': 1, 'Rainy' : 2, 'Sunny' : 3, 'Cloudy' : 4, 'Foggy' : 5, 'Hail' : 6 }
+                            1, # Weather on that Day { 'Snowy': 0, 'Clear': 1, 'Rainy' : 2, 'Sunny' : 3, 'Cloudy' : 4, 'Foggy' : 5, 'Hail' : 6 }
+                            5, # Mood when you wake up { 'refreshed' : 0, 'tired' : 1, 'happy' : 2, 'lazy' : 3, 'groggy' : 4, 'sad' : 5 }
                         ]])
     # [0] GOOD
     # [1] BAD
@@ -63,5 +65,5 @@ def predict():
     else:
         return 'Based on what you\'ve told me I believe you day will be BAD.'
     
-showTree()
+#showTree()
 #print(predict())
