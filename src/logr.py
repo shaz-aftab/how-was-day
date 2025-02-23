@@ -25,7 +25,6 @@ def probability(logr, x): # Probability of the days being good
     probability = odds / (1 + odds)
     return np.round(probability*100).astype(int)
 
-
 #print(predict(5))
 #print(odds())
 #print(probability(logr, x))
