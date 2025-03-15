@@ -6,7 +6,7 @@
 import numpy as np
 from sklearn import linear_model
 
-x = np.array([8, 9, 2, 1, 10, 6, 3, 7, 5, 4,]).reshape(-1, 1) # Stress Levels in the morning (1-10 scale)
+x = np.array([8, 9, 2, 1, 10, 6, 3, 7, 5, 4]).reshape(-1, 1) # Stress Levels in the morning (1-10 scale)
 y = np.array([0, 0, 1, 1, 0, 0, 1, 1, 1, 0]) # Was the day good or bad (0 bad) (1 good)
 
 logr = linear_model.LogisticRegression()
