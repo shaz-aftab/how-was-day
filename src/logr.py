@@ -1,3 +1,8 @@
+"""
+ - Predicts your day using logistic regression based on stress levels
+"""
+
+
 import numpy as np
 from sklearn import linear_model
 

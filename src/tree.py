@@ -25,12 +25,12 @@ def time_to_minutes(time_str):
 
 label_encoder = LabelEncoder()
 
+# Convert time to minutes efficiently
+df["time"] = df["time"].map(time_to_minutes)
 
-df["time"] = df["time"].apply(time_to_minutes)
-df['firstThing'] = label_encoder.fit_transform(df["firstThing"])
-df['weather'] = label_encoder.fit_transform(df["weather"])
-df['goodBad'] = label_encoder.fit_transform(df["goodBad"])
-df['mood'] = label_encoder.fit_transform(df["mood"])
+# Encode categorical columns in one go
+categorical_cols = ["firstThing", "weather", "goodBad", "mood"]
+df[categorical_cols] = df[categorical_cols].apply(label_encoder.fit_transform)
 
 
 # specifying features
