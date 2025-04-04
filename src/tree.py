@@ -70,5 +70,5 @@ def predict():
     else:
         return 'Based on what you\'ve told me I believe you day will be BAD.'
     
-showTree()
-#print(predict())
+#showTree()
+print(predict())
